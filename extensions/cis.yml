@@ -1,0 +1,5 @@
+---
+- name: Run Linux CIS collection for RHEL7
+  import_tasks: custom_extensions/extensions/cis_tasks/rhel7.yml
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'
+

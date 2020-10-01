@@ -1,0 +1,9 @@
+---
+# The first playbook to run.
+# This play will clear out any previous files
+# before running any custom scripts.
+
+- name: remove /tmp/local is if exists
+  file:
+    path: /tmp/local
+    state: absent

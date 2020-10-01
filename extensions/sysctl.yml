@@ -1,0 +1,18 @@
+---
+- name: create temporary local fact home (non-root)
+  file:
+    path: /tmp/local
+    state: directory
+
+- name: add RHEL sysctl facts
+  shell: |
+    /usr/bin/echo "[sysctl]" > /tmp/local/sysctl.fact
+    /sbin/sysctl -a >> /tmp/local/sysctl.fact
+  when: ansible_os_family == "RedHat"
+
+- name: add Debian sysctl facts
+  shell: |
+    /bin/echo "[sysctl]" > /tmp/local/sysctl.fact
+    /sbin/sysctl -a >> /tmp/local/sysctl.fact
+  when: ansible_os_family == "Debian"
+

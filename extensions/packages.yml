@@ -1,0 +1,18 @@
+---
+- name: create temporary local fact home (non-root)
+  file:
+    path: /tmp/local
+    state: directory
+
+- name: Add Yum based packages
+  shell: |
+    /usr/bin/echo "[packages]" > /tmp/local/packages.fact
+    /usr/bin/rpm -qa --queryformat '%{NAME}: %{VERSION}\n' >> /tmp/local/packages.fact
+  when: ansible_os_family == "RedHat"
+
+- name: add Debian based packages
+  shell: |
+    /bin/echo "[packages]" > /tmp/local/packages.fact
+    /usr/bin/dpkg-query -f '${Package}: ${Version}\n' -W >> /tmp/local/packages.fact
+  when: ansible_os_family == "Debian"
+
