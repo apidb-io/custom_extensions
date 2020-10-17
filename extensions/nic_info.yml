@@ -1,0 +1,15 @@
+---
+- name: create temporary local fact home (non-root)
+  file:
+    path: /tmp/local
+    state: directory
+
+- name: add RHEL NIC facts
+  shell: |
+    /usr/bin/echo "[nic_{{ nic_item }}]" > /tmp/local/nic_{{ nic_item }}.fact
+    cat /etc/sysconfig/network-scripts/ifcfg-{{ nic_item }} | grep -v '^#' >> /tmp/local/nic_{{ nic_item }}.fact
+  loop: "{{ ansible_interfaces }}"
+  loop_control:
+    loop_var: nic_item
+  when: ansible_os_family == "RedHat"
+

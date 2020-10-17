@@ -4,11 +4,17 @@
     path: /tmp/local
     state: directory
 
-- name: add local facts
+- name: add local facts RHEL based
   shell: |
     /usr/bin/echo "[local_facts]" > /tmp/local/local.fact
     chmod 644 /tmp/local/local.fact
-  when: ansible_os_family != "Windows"
+  when: ansible_os_family == "RedHat"
+
+- name: add local facts Debian based
+  shell: |
+    /bin/echo "[local_facts]" > /tmp/local/local.fact
+    chmod 644 /tmp/local/local.fact
+  when: ansible_os_family == "Debian"
 
 - name: insert custom fact script
   copy:
