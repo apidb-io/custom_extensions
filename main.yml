@@ -3,10 +3,11 @@
   include_tasks: "{{ custom_item }}"
   loop:
     - custom_extensions/extensions/tidyup.yml # Cleans out old files 
-#    - custom_extensions/extensions/sample_facts.yml # My own loacl fact collection populates the dashboard.
-#    - custom_extensions/extensions/cis.yml # Checks CIS controls against RHEL7
-#    - custom_extensions/extensions/packages.yml # adds packages intot he dashboard.
-#    - custom_extensions/extensions/sysctl.yml # Add sysctl settings into the dashboard.
-#    - custom_extensions/extensions/nic_info.yml # Add NIC settings into the dashboard.
+    - custom_extensions/extensions/sample_facts.yml # My own loacl fact collection populates the dashboard.
+    - custom_extensions/extensions/cis.yml # Checks CIS controls against RHEL7
+    - custom_extensions/extensions/packages.yml # adds packages intot he dashboard.
+    - custom_extensions/extensions/sysctl.yml # Add sysctl settings into the dashboard.
+    - custom_extensions/extensions/nic_info.yml # Add NIC settings into the dashboard.
+    - custom_extensions/extensions/port_info.yml # Add NIC settings into the dashboard.
   loop_control:
     loop_var: custom_item
