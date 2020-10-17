@@ -5,5 +5,14 @@ This ansible playbook is designed to run with the APIDB_collection. Please go he
 
 https://github.com/apidb-io/apidb-collection
 
+Current fact collections
+========================
+
+  * Sysctl settings
+  * Sample_facts file for pulling cloud info
+  * CIS facts (Only RHEL7 atm)
+  * Installed packages info
+  * NIC info (only RHEL based atm)
+
 Thanks
 - The Team
