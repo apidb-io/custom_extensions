@@ -8,11 +8,12 @@
   shell: |
     /usr/bin/echo "[sysctl]" > /tmp/local/sysctl.fact
     /sbin/sysctl -a >> /tmp/local/sysctl.fact
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'
 
-- name: add Debian sysctl facts
-  shell: |
-    /bin/echo "[sysctl]" > /tmp/local/sysctl.fact
-    /sbin/sysctl -a >> /tmp/local/sysctl.fact
-  when: ansible_os_family == "Debian"
+# Under Development
+#- name: add Debian sysctl facts
+#  shell: |
+#    /bin/echo "[sysctl]" > /tmp/local/sysctl.fact
+#    /sbin/sysctl -a >> /tmp/local/sysctl.fact
+#  when: ansible_os_family == "Debian" and ansible_distribution_version == '18.04'
 
