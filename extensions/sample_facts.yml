@@ -4,11 +4,17 @@
     path: /tmp/local
     state: directory
 
-- name: add local facts RHEL based
+- name: add local facts RHEL6 based
+  shell: |
+    /bin/echo "[local_facts]" > /tmp/local/local.fact
+    chmod 644 /tmp/local/local.fact
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '6'
+
+- name: add local facts RHEL7 based
   shell: |
     /usr/bin/echo "[local_facts]" > /tmp/local/local.fact
     chmod 644 /tmp/local/local.fact
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'
 
 - name: add local facts Debian based
   shell: |
