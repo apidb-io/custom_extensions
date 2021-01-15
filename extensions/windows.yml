@@ -1,0 +1,11 @@
+---
+- name: Create WIndows DIR
+  win_file:
+    path: C:\Temp\facts
+    state: directory
+
+- name: Copy powershell script to windows servers
+  win_copy:
+    src: files/local.ps1
+    dest: 'C:\Temp\facts\'
+

@@ -3,6 +3,7 @@
   file:
     path: /tmp/local
     state: directory
+  when: ansible_os_family != "Windows"
 
 - name: add local facts RHEL6 based
   shell: |
@@ -27,12 +28,15 @@
     src: custom_extensions/extensions/files/sampleFacts.sh
     dest: /tmp/local/sampleFacts.sh
     mode: '0755'
+  when: ansible_os_family != "Windows"
 
 - name: add Instance facts
   shell: /tmp/local/sampleFacts.sh
+  when: ansible_os_family != "Windows"
 
 - name: remove local fact  script
   file:
     path: /tmp/local/sampleFacts.sh
     state: absent
+  when: ansible_os_family != "Windows"
 

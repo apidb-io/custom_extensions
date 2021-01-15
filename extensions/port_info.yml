@@ -3,6 +3,7 @@
   file:
     path: /tmp/local
     state: directory
+  when: ansible_os_family != "Windows"
 
 - name: Add RHEL open ports
   shell: |
