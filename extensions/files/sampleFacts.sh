@@ -63,6 +63,7 @@ then
 
     echo "cloud: AZURE"
     echo "INSTANCE_TYPE: "$AZURE_INSTANCE_TYPE
+    echo "AVAIL_ZONE: "$AZURE_REGION
     echo "REGION: "$AZURE_REGION
     echo "RESOURCE_GROUP_NAME: "$AZURE_RESOURCE_GROUP_NAME
     echo "environment: Test"

@@ -3,9 +3,11 @@
   win_file:
     path: C:\Temp\facts
     state: directory
+  when: ansible_os_family == "Windows"
 
 - name: Copy powershell script to windows servers
   win_copy:
     src: files/local.ps1
     dest: 'C:\Temp\facts\'
+  when: ansible_os_family == "Windows"
 

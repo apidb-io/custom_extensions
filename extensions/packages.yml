@@ -9,7 +9,7 @@
   shell: |
     /usr/bin/echo "[packages]" > /tmp/local/packages.fact
     /usr/bin/rpm -qa --queryformat '%{NAME}: %{VERSION}\n' >> /tmp/local/packages.fact
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7' and ansible_distribution_major_version == '6'
 
 - name: add Debian based packages
   shell: |
