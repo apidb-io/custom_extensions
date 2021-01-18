@@ -5,7 +5,7 @@ This ansible playbook is designed to run with the **ansibledb_opensource** galax
 
 https://galaxy.ansible.com/apidb/ansibledb_opensource
 
-Comatibility
+Compatibility
 ------------
 If you can run Ansible, you can run these custom extensions. We support both Windows and Linux. If your OS isn't supported, let us know. 
 
