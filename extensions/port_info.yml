@@ -7,9 +7,21 @@
 
 - name: Add RHEL open ports
   shell: |
+    /bin/echo "[open_ports]" > /tmp/local/open_ports.fact
+    netstat -tuln | awk '{print $1" "$4}' |  grep ':' | awk -F: '{print $NF" "$1}' | awk '{print $2"-"$1": "$1}' >> /tmp/local/open_ports.fact
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '6'
+
+- name: Add RHEL open ports
+  shell: |
     /usr/bin/echo "[open_ports]" > /tmp/local/open_ports.fact
     netstat -tuln | awk '{print $1" "$4}' |  grep ':' | awk -F: '{print $NF" "$1}' | awk '{print $2"-"$1": "$1}' >> /tmp/local/open_ports.fact
-  when: ansible_os_family == "RedHat"
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '7'
+
+- name: Add RHEL open ports
+  shell: |
+    /usr/bin/echo "[open_ports]" > /tmp/local/open_ports.fact
+    netstat -tuln | awk '{print $1" "$4}' |  grep ':' | awk -F: '{print $NF" "$1}' | awk '{print $2"-"$1": "$1}' >> /tmp/local/open_ports.fact
+  when: ansible_os_family == "RedHat" and ansible_distribution_major_version == '8'
 
 - name: Add Debian open ports
   shell: |
